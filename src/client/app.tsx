@@ -4,6 +4,7 @@ import { InvoiceEditorPage } from "./pages/invoice-editor";
 import { InvoicesPage } from "./pages/invoices";
 import { PartiesPage } from "./pages/parties";
 import { ProductsPage } from "./pages/products";
+import { SettingsPage } from "./pages/settings";
 import { Link, usePath } from "./router";
 
 const NAV: { to: string; label: string }[] = [
@@ -30,7 +31,9 @@ export function App() {
             </Link>
           ))}
         </nav>
-        <span className="ml-auto text-xs text-gray-400">EU-compliance accounting</span>
+        <Link to="/settings" className="ml-auto text-sm text-gray-500 hover:text-gray-900" activeClassName="!text-gray-900 font-medium">
+          Settings
+        </Link>
       </header>
       <main>{renderRoute(path)}</main>
     </div>
@@ -46,6 +49,7 @@ function renderRoute(path: string) {
   if (path.startsWith("/suppliers")) return <PartiesPage kind="supplier" />;
   if (path.startsWith("/products")) return <ProductsPage />;
   if (path.startsWith("/accounts")) return <AccountsPage />;
+  if (path.startsWith("/settings")) return <SettingsPage />;
   return <NotFound path={path} />;
 }
 
