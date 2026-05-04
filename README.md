@@ -4,6 +4,8 @@ EU-compliance-first, agent-native, open source accounting and tax filing.
 
 A Clawnify template app. React + Hono + D1 on Cloudflare Workers. AGPL-3.0.
 
+<img width="1255" height="850" alt="Image" src="https://github.com/user-attachments/assets/95aa80a9-d8a7-45b0-a184-193597fdeaa1" />
+
 > **Status: early — Phase 1 in progress.** Invoicing, double-entry bookkeeping, EU VAT logic, RGS chart of accounts, Peppol BIS Billing 3.0 UBL export, and visual PDFs work end-to-end. SBR/iXBRL for Dutch tax filing and country plugins (BE/FR/DE/IT) come in later phases.
 
 ## Why
