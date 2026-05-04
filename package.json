@@ -1,0 +1,34 @@
+{
+  "name": "open-books",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "clawnify dev",
+    "build": "vite build",
+    "deploy": "clawnify deploy"
+  },
+  "dependencies": {
+    "hono": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "clawnify": "^0.1.13",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0",
+    "wrangler": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "name": "RGS starter subset",
+    "note": "Top-level rubrieken (B/W) and the principal level-2 groepen. Replace with the canonical ~4000-row RGS export from boekhoudplaza.nl / SBR Nederland for production use.",
+    "rgs_version_target": "RGS 3.7"
+  },
+  "accounts": [
+    { "rgs_code": "B",    "parent_code": null, "nivo": 1, "omskort": "Balans",            "omslang": "Balansrekeningen",                                "bw": "B" },
+    { "rgs_code": "BIva", "parent_code": "B",  "nivo": 2, "omskort": "Imm. vaste activa", "omslang": "Immateriële vaste activa",                        "bw": "B", "dc": "D" },
+    { "rgs_code": "BMva", "parent_code": "B",  "nivo": 2, "omskort": "Mat. vaste activa", "omslang": "Materiële vaste activa",                          "bw": "B", "dc": "D" },
+    { "rgs_code": "BFva", "parent_code": "B",  "nivo": 2, "omskort": "Fin. vaste activa", "omslang": "Financiële vaste activa",                         "bw": "B", "dc": "D" },
+    { "rgs_code": "BVrd", "parent_code": "B",  "nivo": 2, "omskort": "Voorraden",         "omslang": "Voorraden",                                       "bw": "B", "dc": "D" },
+    { "rgs_code": "BPro", "parent_code": "B",  "nivo": 2, "omskort": "Onderh. projecten", "omslang": "Onderhanden projecten in opdracht van derden",   "bw": "B", "dc": "D" },
+    { "rgs_code": "BVor", "parent_code": "B",  "nivo": 2, "omskort": "Vorderingen",       "omslang": "Vorderingen",                                     "bw": "B", "dc": "D" },
+    { "rgs_code": "BEff", "parent_code": "B",  "nivo": 2, "omskort": "Effecten",          "omslang": "Effecten",                                        "bw": "B", "dc": "D" },
+    { "rgs_code": "BLim", "parent_code": "B",  "nivo": 2, "omskort": "Liquide middelen", "omslang": "Liquide middelen",                                "bw": "B", "dc": "D" },
+    { "rgs_code": "BEiv", "parent_code": "B",  "nivo": 2, "omskort": "Eigen vermogen",    "omslang": "Eigen vermogen",                                  "bw": "B", "dc": "C" },
+    { "rgs_code": "BVrz", "parent_code": "B",  "nivo": 2, "omskort": "Voorzieningen",     "omslang": "Voorzieningen",                                   "bw": "B", "dc": "C" },
+    { "rgs_code": "BLas", "parent_code": "B",  "nivo": 2, "omskort": "Langlop. schulden", "omslang": "Langlopende schulden",                            "bw": "B", "dc": "C" },
+    { "rgs_code": "BKas", "parent_code": "B",  "nivo": 2, "omskort": "Kortlop. schulden", "omslang": "Kortlopende schulden",                            "bw": "B", "dc": "C" },
+
+    { "rgs_code": "W",    "parent_code": null, "nivo": 1, "omskort": "Winst & verlies",    "omslang": "Winst- en verliesrekening",                       "bw": "W" },
+    { "rgs_code": "WOmz", "parent_code": "W",  "nivo": 2, "omskort": "Netto-omzet",        "omslang": "Netto-omzet",                                     "bw": "W", "dc": "C" },
+    { "rgs_code": "WWiv", "parent_code": "W",  "nivo": 2, "omskort": "Wijz. voorraden",   "omslang": "Wijziging in voorraden gereed product en onderhanden werk", "bw": "W", "dc": "C" },
+    { "rgs_code": "WGec", "parent_code": "W",  "nivo": 2, "omskort": "Geac. productie",   "omslang": "Geactiveerde productie eigen bedrijf",            "bw": "W", "dc": "C" },
+    { "rgs_code": "WOvb", "parent_code": "W",  "nivo": 2, "omskort": "Ov. bedr.opbrengst", "omslang": "Overige bedrijfsopbrengsten",                     "bw": "W", "dc": "C" },
+    { "rgs_code": "WKpr", "parent_code": "W",  "nivo": 2, "omskort": "Kostprijs omzet",    "omslang": "Kostprijs van de omzet",                          "bw": "W", "dc": "D" },
+    { "rgs_code": "WPer", "parent_code": "W",  "nivo": 2, "omskort": "Personeelskosten",   "omslang": "Personeelskosten",                                "bw": "W", "dc": "D" },
+    { "rgs_code": "WAfs", "parent_code": "W",  "nivo": 2, "omskort": "Afschrijvingen",     "omslang": "Afschrijvingen op vaste activa",                  "bw": "W", "dc": "D" },
+    { "rgs_code": "WBwv", "parent_code": "W",  "nivo": 2, "omskort": "Bijz. waardeverm.",  "omslang": "Bijzondere waardeverminderingen",                 "bw": "W", "dc": "D" },
+    { "rgs_code": "WOvk", "parent_code": "W",  "nivo": 2, "omskort": "Ov. bedr.kosten",   "omslang": "Overige bedrijfskosten",                          "bw": "W", "dc": "D" },
+    { "rgs_code": "WFbl", "parent_code": "W",  "nivo": 2, "omskort": "Fin. baten/lasten",  "omslang": "Financiële baten en lasten",                      "bw": "W", "dc": "D" },
+    { "rgs_code": "WBel", "parent_code": "W",  "nivo": 2, "omskort": "Belastingen",        "omslang": "Belastingen over de winst",                       "bw": "W", "dc": "D" }
+  ]
+}
