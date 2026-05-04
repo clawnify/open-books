@@ -136,3 +136,32 @@ CREATE TABLE IF NOT EXISTS company (
 );
 
 INSERT OR IGNORE INTO company (id) VALUES (1);
+
+CREATE TABLE IF NOT EXISTS journal_entries (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  reference TEXT NOT NULL,
+  description TEXT,
+  date TEXT NOT NULL,
+  source_type TEXT,
+  source_id INTEGER,
+  status TEXT NOT NULL DEFAULT 'posted',
+  posted_at TEXT NOT NULL DEFAULT (datetime('now')),
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS journal_lines (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  entry_id INTEGER NOT NULL,
+  position INTEGER NOT NULL,
+  account_code TEXT NOT NULL,
+  description TEXT,
+  debit_cents INTEGER NOT NULL DEFAULT 0,
+  credit_cents INTEGER NOT NULL DEFAULT 0,
+  FOREIGN KEY (entry_id) REFERENCES journal_entries(id) ON DELETE CASCADE,
+  FOREIGN KEY (account_code) REFERENCES accounts(rgs_code)
+);
+
+CREATE INDEX IF NOT EXISTS idx_journal_entries_date ON journal_entries(date);
+CREATE INDEX IF NOT EXISTS idx_journal_entries_source ON journal_entries(source_type, source_id);
+CREATE INDEX IF NOT EXISTS idx_journal_lines_entry ON journal_lines(entry_id);
+CREATE INDEX IF NOT EXISTS idx_journal_lines_account ON journal_lines(account_code);

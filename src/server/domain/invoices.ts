@@ -1,5 +1,6 @@
 import { get, query, run } from "../db";
 import { getCompany } from "./company";
+import { createFromInvoice as createJournalFromInvoice, deleteEntriesForInvoice } from "./journals";
 import { getParty } from "./parties";
 import { nextNumber, type NumberingScope } from "./numbering";
 import { computeVat } from "./vat";
@@ -101,6 +102,7 @@ export async function createDraft(input: CreateDraftInput): Promise<Invoice> {
 }
 
 export async function deleteInvoice(id: number): Promise<void> {
+  await deleteEntriesForInvoice(id);
   await run("DELETE FROM invoice_lines WHERE invoice_id = ?", [id]);
   await run("DELETE FROM invoices WHERE id = ?", [id]);
 }
@@ -126,6 +128,7 @@ export async function issueInvoice(id: number): Promise<Invoice | undefined> {
      WHERE id = ?`,
     [number, today, id],
   );
+  await createJournalFromInvoice(id);
   return getInvoice(id);
 }
 
@@ -134,6 +137,9 @@ export async function setStatus(id: number, status: InvoiceStatus): Promise<Invo
     `UPDATE invoices SET status = ?, updated_at = datetime('now') WHERE id = ?`,
     [status, id],
   );
+  if (status === "cancelled") {
+    await deleteEntriesForInvoice(id);
+  }
   return getInvoice(id);
 }
 

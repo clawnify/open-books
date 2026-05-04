@@ -18,6 +18,7 @@ import {
   type InvoiceType,
 } from "./domain/invoices";
 import { getCompany, updateCompany } from "./domain/company";
+import { backfillFromInvoices, getEntry, listEntries, trialBalance } from "./domain/journals";
 import { COUNTRY_VAT, computeVat, EU_MEMBER_STATES } from "./domain/vat";
 import { renderInvoiceHTML } from "./exports/invoice-html";
 import { PdfRenderError, renderPDF, type PdfEnv } from "./exports/pdf";
@@ -258,6 +259,29 @@ api.get("/api/company", async (c) => c.json(await getCompany()));
 api.patch("/api/company", async (c) => {
   const body = await c.req.json();
   return c.json(await updateCompany(body));
+});
+
+api.get("/api/journals", async (c) => {
+  const source_type = c.req.query("source_type") || undefined;
+  const from = c.req.query("from") || undefined;
+  const to = c.req.query("to") || undefined;
+  return c.json(await listEntries({ source_type, from, to }));
+});
+
+api.get("/api/journals/:id", async (c) => {
+  const entry = await getEntry(Number(c.req.param("id")));
+  if (!entry) return c.json({ error: "Not found" }, 404);
+  return c.json(entry);
+});
+
+api.post("/api/journals/backfill", async (c) => {
+  return c.json(await backfillFromInvoices());
+});
+
+api.get("/api/reports/trial-balance", async (c) => {
+  const from = c.req.query("from") || undefined;
+  const to = c.req.query("to") || undefined;
+  return c.json(await trialBalance({ from, to }));
 });
 
 api.post("/api/invoices/:id/status", async (c) => {
