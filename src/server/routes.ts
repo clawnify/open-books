@@ -19,6 +19,7 @@ import {
 } from "./domain/invoices";
 import { getCompany, updateCompany } from "./domain/company";
 import { backfillFromInvoices, getEntry, listEntries, trialBalance } from "./domain/journals";
+import { balanceSheet, profitLoss } from "./domain/reports";
 import { COUNTRY_VAT, computeVat, EU_MEMBER_STATES } from "./domain/vat";
 import { renderInvoiceHTML } from "./exports/invoice-html";
 import { PdfRenderError, renderPDF, type PdfEnv } from "./exports/pdf";
@@ -282,6 +283,17 @@ api.get("/api/reports/trial-balance", async (c) => {
   const from = c.req.query("from") || undefined;
   const to = c.req.query("to") || undefined;
   return c.json(await trialBalance({ from, to }));
+});
+
+api.get("/api/reports/profit-loss", async (c) => {
+  const from = c.req.query("from") || undefined;
+  const to = c.req.query("to") || undefined;
+  return c.json(await profitLoss({ from, to }));
+});
+
+api.get("/api/reports/balance-sheet", async (c) => {
+  const as_of = c.req.query("as_of") || undefined;
+  return c.json(await balanceSheet({ as_of }));
 });
 
 api.post("/api/invoices/:id/status", async (c) => {

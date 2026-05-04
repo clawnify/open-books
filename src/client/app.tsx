@@ -5,6 +5,7 @@ import { InvoicesPage } from "./pages/invoices";
 import { JournalsPage } from "./pages/journals";
 import { PartiesPage } from "./pages/parties";
 import { ProductsPage } from "./pages/products";
+import { ReportsPage } from "./pages/reports";
 import { SettingsPage } from "./pages/settings";
 import { Link, usePath } from "./router";
 
@@ -14,6 +15,7 @@ const NAV: { to: string; label: string }[] = [
   { to: "/suppliers", label: "Suppliers" },
   { to: "/products", label: "Products" },
   { to: "/journals", label: "Journal" },
+  { to: "/reports", label: "Reports" },
   { to: "/accounts", label: "Accounts" },
 ];
 
@@ -51,6 +53,7 @@ function renderRoute(path: string) {
   if (path.startsWith("/suppliers")) return <PartiesPage kind="supplier" />;
   if (path.startsWith("/products")) return <ProductsPage />;
   if (path.startsWith("/journals")) return <JournalsPage />;
+  if (path.startsWith("/reports")) return <ReportsPage />;
   if (path.startsWith("/accounts")) return <AccountsPage />;
   if (path.startsWith("/settings")) return <SettingsPage />;
   return <NotFound path={path} />;
