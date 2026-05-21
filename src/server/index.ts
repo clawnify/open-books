@@ -8,7 +8,7 @@ type Env = { Bindings: { DB: D1Database; UPLOADS: R2Bucket } };
 const app = new Hono<Env>();
 
 app.use("*", async (c, next) => {
-  initDB(c.env.DB);
+  initDB(c.env);
   initUploads(c.env.UPLOADS);
   await next();
 });
